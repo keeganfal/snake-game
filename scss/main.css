@@ -5,21 +5,44 @@
 }
 
 * {
-  font-family: sans-serif;
+  font-family: "JetBrains Mono", monospace, sans-serif;
   font-weight: 600;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   width: 100vw;
 }
-body .main__grid-container {
-  display: grid;
-  flex-direction: column;
-  height: 100vh;
+body .title {
+  padding-top: 2vh;
+  font-size: 30px;
+}
+body .gui {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   width: 100vw;
+  font-size: 20px;
+}
+body .grid-container {
+  display: grid;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  height: 1000px;
+  width: 1000px;
+  padding: 0.5vh;
+  background-color: lightgray;
+}
+body .grid-container .grid-piece {
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
 }
 
 .gui__start-btn {
