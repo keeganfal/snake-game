@@ -5,33 +5,20 @@
     
 }
 
-.main__grid-container {
-    display: grid;
-    justify-content: center;
-    justify-items: center;
+body {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-color: #94A89A;
-    font-size: 30px;
 
-    .main__form {
+    .main__grid-container {
         display: grid;
-        height: auto;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
     }
-    
-    .main__output-morse{
-        display: flex;
-        align-items: center;
-        font-size: 50px;
-    }
-
-    .main__output-english {
-        display: flex;
-        align-items: center;
-        font-size: 50px;
-    }
-
 }
+
 
 @media screen and (min-width: 768px) {
     
