@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+.main__grid-container {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #94A89A;
+  font-size: 30px;
+}
+.main__grid-container .main__form {
+  display: grid;
+  height: auto;
+}
+.main__grid-container .main__output-morse {
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+}
+.main__grid-container .main__output-english {
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+}
