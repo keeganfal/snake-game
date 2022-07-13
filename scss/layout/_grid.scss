@@ -43,7 +43,16 @@ body {
             border: 1px solid #ddd;
             text-align: center;
             width: 100%;
+
+            &--snake {
+                border: 1px solid #ddd;
+                text-align: center;
+                width: 100%;
+                background-color: $snake-body-color;
+            }
+    
         }
+        
     }
 }
 

@@ -44,6 +44,12 @@ body .grid-container .grid-piece {
   text-align: center;
   width: 100%;
 }
+body .grid-container .grid-piece--snake {
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
+  background-color: green;
+}
 
 .gui__start-btn {
   align-items: center;
