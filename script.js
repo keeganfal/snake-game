@@ -11,6 +11,7 @@ function makeRows(rows, column) {
     let cell = document.createElement("div");
     //cell.innerText = (i + 1);
     gridContainer.appendChild(cell).id = i;
+    gridContainer.appendChild(cell).className = 'grid-piece';
     };
 };
 makeRows(20, 20);
@@ -34,7 +35,11 @@ let interval = 0;
 // Resets all the variables to the original
 const runGame = () => {
     currentSnake.forEach(index => gridPieces[index].classList.remove('grid-piece--snake'));
-    clearInterval(interval)
+    for (let i = 0; i < gridPieces.length; i++){
+        if (gridPieces[i].classList.contains('grid-piece--food')) {
+            gridPieces[i].classList.remove('grid-piece--food');
+        }
+    }
     score = 0;
     snakeDirection = 1;
     scoreVal.innerHTML = `Score: ${score}`;
@@ -43,8 +48,9 @@ const runGame = () => {
     currentSnake = [ 210, 209, 208];
 
     currentSnake.forEach(index => gridPieces[index].classList.add('grid-piece--snake'));
-    randomFood();
-    interval = setInterval(ifCollides, timeBetween);
+    generateFood();
+    clearInterval(interval)
+    interval = setInterval(ifCollides, 200);
 }
 
 //snake control with key strokes
@@ -60,10 +66,10 @@ const ifCollides = () => {
     (currentSnake[0] + width >= (width*width) && snakeDirection === width) ||
     (currentSnake[0] % width === (width - 1) && snakeDirection === 1) ||
     (currentSnake[0] % width === 0 && snakeDirection === - 1) ||
-    (currentSnake[0] - width < 0 && snakeDirection === - width)
+    (currentSnake[0] - width <= 0 && snakeDirection === - width)
     ) {
         alert("GAME OVER")
-        return clearInterval(interval);
+        return runGame();
     }
 
     const lastItem = currentSnake.pop() 
@@ -71,10 +77,21 @@ const ifCollides = () => {
     gridPieces[lastItem].classList.remove('grid-piece--snake')
     currentSnake.unshift(currentSnake[0] + snakeDirection) 
     gridPieces[currentSnake[0]].classList.add('grid-piece--snake')
+
+    //eat food
+    if(gridPieces[currentSnake[0]].classList.contains('grid-piece--food')) {
+        gridPieces[currentSnake[0]].classList.remove('grid-piece--food')
+        gridPieces[lastItem].classList.add('grid-piece--snake')
+        currentSnake.push(lastItem)
+
+        score += 10;
+        scoreVal.innerHTML = `Score: ${score}`;
+        generateFood()
+      }
 }
 
 //adds random food
-const randomFood = () => {
+const generateFood = () => {
     foodLoc = Math.floor(Math.random() * gridPieces.length);
     for (i in gridPieces){
         if (!gridPieces[foodLoc].classList.contains('grid-piece--snake')) {
@@ -82,6 +99,16 @@ const randomFood = () => {
         }
     }
 }
+
+const eatFood = () => {
+    foodLoc = Math.floor(Math.random() * gridPieces.length);
+    for (i in gridPieces){
+        if (!gridPieces[foodLoc].classList.contains('grid-piece--snake')) {
+            gridPieces[foodLoc].classList.add('grid-piece--food');
+        }
+    }
+}
+
 
 document.addEventListener('keydown', snakeControl)
 startBtn.addEventListener('click', runGame)

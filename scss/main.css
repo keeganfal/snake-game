@@ -48,7 +48,7 @@ body .grid-container .grid-piece--snake {
   border: 1px solid #ddd;
   text-align: center;
   width: 100%;
-  background-color: green;
+  background-color: rgb(0, 102, 102);
 }
 body .grid-container .grid-piece--food {
   border: 1px solid #ddd;
