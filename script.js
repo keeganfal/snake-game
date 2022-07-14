@@ -9,8 +9,7 @@ function makeRows(rows, column) {
     gridContainer.style.setProperty('--grid-column', column);
     for (let i = -1; i < (rows * column) - 1; i++) {
     let cell = document.createElement("div");
-    cell.innerText = (i + 1);
-    // gridContainer.appendChild(cell).className = "grid-piece";
+    //cell.innerText = (i + 1);
     gridContainer.appendChild(cell).id = i;
     };
 };
