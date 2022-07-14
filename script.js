@@ -23,7 +23,7 @@ const width = 20;
 let score = 0;
 
 // grid piece loc of the snake
-let currentSnake = [ 210, 209, 208];
+let currentSnake = [ 210, 209];
 let snakeDirection = 1;
 
 let foodLoc = 0;
@@ -45,12 +45,12 @@ const runGame = () => {
     scoreVal.innerHTML = `Score: ${score}`;
     // Time between frames in ms
     timeBetween = 200;
-    currentSnake = [ 210, 209, 208];
+    currentSnake = [ 210, 209];
 
     currentSnake.forEach(index => gridPieces[index].classList.add('grid-piece--snake'));
     generateFood();
     clearInterval(interval)
-    interval = setInterval(ifCollides, 200);
+    interval = setInterval(ifCollides, timeBetween);
 }
 
 //snake control with key strokes
@@ -108,7 +108,6 @@ const eatFood = () => {
         }
     }
 }
-
 
 document.addEventListener('keydown', snakeControl)
 startBtn.addEventListener('click', runGame)
